@@ -1,0 +1,34 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Build frontend
+      working-directory: frontend
+      run: |
+        npm install
+        npm run build
+
+    - name: Move build files to backend
+      run: |
+        cp -r frontend/build/* backend/static/
+
+    - name: Deploy application
+      run: |
+        # Add your deployment commands here
+        echo "Deploying to production..."
