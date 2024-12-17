@@ -4,6 +4,7 @@ from flask import Flask, jsonify
 # from typing import Dict
 
 app = Flask(__name__)
+# app.register_blueprint()
 
 
 @app.route('/')
