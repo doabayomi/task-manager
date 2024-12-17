@@ -1,5 +1,13 @@
+# Python environments
 **/.venv/
 **/venv/
 **/env/
+
+# Caches
 **/__pycache__/
+
+# npm installations
 **/node_modules/
+
+# Config/environment files
+**/.config
