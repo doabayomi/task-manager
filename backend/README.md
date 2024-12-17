@@ -3,9 +3,12 @@ Backend codebase for task manager project
 
 
 ## File Structure
-| File/Directory | Function       |
-|----------------|----------------|
-| `app.py`       | Flask app file |
+| File/Directory | Function                                |
+|----------------|-----------------------------------------|
+| `app.py`       | Flask app file                          |
+| `auth/`        | Module for authentication               |
+| `pages/`       | Module for static pages and error pages |
+| `models/`      | Module for db models                    |
 
 ## Usage
 For development:

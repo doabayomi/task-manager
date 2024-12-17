@@ -1,6 +1,7 @@
 """Main flask app"""
 from flask import Flask, jsonify
 from auth import auth_blueprint
+from pages import pages_blueprint
 from config import Config
 from models import db
 
@@ -19,6 +20,7 @@ def create_app(config_object=Config):
 
     db.init_app(app)
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(pages_blueprint)
     return app
 
 
