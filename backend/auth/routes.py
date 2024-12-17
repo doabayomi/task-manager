@@ -1,3 +1,4 @@
+"""Authentication routes"""
 from . import auth_blueprint
 
 

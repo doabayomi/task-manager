@@ -1,3 +1,5 @@
 pycodestyle
 flask
 python-dotenv
+flask-sqlalchemy
+flask-migrate

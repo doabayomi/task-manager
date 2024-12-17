@@ -1,20 +1,27 @@
-"""Main flask app
-"""
+"""Main flask app"""
 from flask import Flask, jsonify
-# from typing import Dict
+from auth import auth_blueprint
+from config import Config
+from models import db
 
-app = Flask(__name__)
-# app.register_blueprint()
 
+def create_app(config_object=Config):
+    """Create app function to conform to factory pattern
 
-@app.route('/')
-def index():
-    """Gets index page
+    Args:
+        config_object: Config class from config.py. Defaults to Config.
 
     Returns:
-        Hello world message
+        App instance
     """
-    message: dict[str, str] = {
-        'message': 'Hello world'
-    }
-    return jsonify(message), 200
+    app = Flask(__name__)
+    app.config.from_object(config_object)
+
+    db.init_app(app)
+    app.register_blueprint(auth_blueprint)
+    return app
+
+
+if __name__ == '__main__':
+    app = create_app(Config)
+    app.run(debug=True)
