@@ -10,4 +10,4 @@
 **/node_modules/
 
 # Config/environment files
-**/.config
+**/.env
