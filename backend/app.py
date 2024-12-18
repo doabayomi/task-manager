@@ -20,7 +20,7 @@ def create_app(config_object=Config):
 
     db.init_app(app)
     app.register_blueprint(pages_blueprint)
-    app.register_blueprint(auth_blueprint)
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
     return app
 
 
