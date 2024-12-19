@@ -3,3 +3,7 @@ flask
 python-dotenv
 flask-sqlalchemy
 flask-migrate
+flask-security-too
+# wtforms
+setuptools
+argon2_cffi

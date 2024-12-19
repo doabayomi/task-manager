@@ -1,8 +1,14 @@
 """Main flask app"""
-from flask import Flask, jsonify
+from flask import Flask
+from flask_security import Security, SQLAlchemyUserDatastore
+from flask_security.models import fsqla_v3 as fsqla
+
+
 from auth import auth_blueprint
 from pages import pages_blueprint
+
 from config import Config
+
 from models import db
 
 
@@ -19,8 +25,25 @@ def create_app(config_object=Config):
     app.config.from_object(config_object)
 
     db.init_app(app)
+    fsqla.FsModels.set_db_info(db)
+
+    # ! It is important that the models for authentication are
+    # ! imported after set_db_info() or it'll break the code.
+    # ! In fact, this applies to most things here except blueprints
+    from models.user import User
+    from models.role import Role
+
+    # ? Role model could be possibly used for collaboration
+    user_datastore = SQLAlchemyUserDatastore(db, User, None)
+    security = Security(app, user_datastore)
+
     app.register_blueprint(pages_blueprint)
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
+
+    with app.app_context():
+        db.drop_all()  # ! For testing, should be deleted when deploying
+        db.create_all()
+
     return app
 
 

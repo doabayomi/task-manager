@@ -1,7 +1,7 @@
-# from flask_security import UserMixin
+# from flask_security import RoleMixin
 from . import db
 from flask_security.models import fsqla_v3 as fsqla
 
 
-class User(db.Model, fsqla.FsUserMixin):
+class Role(db.Model, fsqla.FsRoleMixin):
     pass
