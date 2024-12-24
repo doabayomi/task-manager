@@ -2,10 +2,12 @@
 from flask import Flask
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_security.models import fsqla_v3 as fsqla
+from flask_restful import Api
 
 from config import Config
 
 from models import db
+from tasks import TaskResource
 
 
 def create_app(config_object=Config):
@@ -31,6 +33,9 @@ def create_app(config_object=Config):
     # ? Role model could be possibly used for collaboration
     user_datastore = SQLAlchemyUserDatastore(db, User, None)
     security = Security(app, user_datastore)
+
+    api = Api(app)
+    api.add_resource(TaskResource, '/tasks', '/tasks/<int:task_id>')
 
     from auth import auth_blueprint
     from pages import pages_blueprint

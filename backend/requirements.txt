@@ -7,3 +7,4 @@ flask-security-too
 # wtforms
 setuptools
 argon2_cffi
+flask-restful

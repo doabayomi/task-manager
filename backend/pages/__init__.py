@@ -1,4 +1,4 @@
-"""Authentication module"""
+"""Pages module"""
 from flask import Blueprint
 # from . import routes
 
