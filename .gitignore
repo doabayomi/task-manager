@@ -11,3 +11,5 @@
 
 # Config/environment files
 **/.env
+
+**/.vscode/
