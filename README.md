@@ -26,6 +26,12 @@ pip install -r requirements.txt
 Set-ExecutionPolicy Unrestricted -Scope Process
 ```
 
+* Set up the js libraries in the `/static` and `/templates` directory
+```bash
+npm install
+```
+
+
 * Create your own `.env` file with the following variable names:
     | Field                     | Description                              |
     |---------------------------|------------------------------------------|
@@ -42,3 +48,8 @@ Set-ExecutionPolicy Unrestricted -Scope Process
 * `/auth/register`
 * `/auth/logout`
 * `/auth/profile`
+
+# Linting HTML
+```bash
+npx linthtml 'yourfile.html'
+```
