@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@linthtml/linthtml": "^0.10.1"
+  },
+  "dependencies": {
+    "eslint": "^9.17.0"
+  }
+}
