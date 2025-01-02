@@ -1,5 +1,5 @@
-# Backend directory
-Backend codebase for task manager project
+# Task Manager App
+ALX porfolio webstack project
 
 
 ## File Structure
