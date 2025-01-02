@@ -3,19 +3,18 @@ Backend codebase for task manager project
 
 
 ## File Structure
-| File/Directory | Function                                |
-|----------------|-----------------------------------------|
-| `app.py`       | Flask app file                          |
-| `auth/`        | Module for authentication               |
-| `pages/`       | Module for static pages and error pages |
-| `models/`      | Module for db models                    |
-| `static/` | Frontend components and resources |
-| `resources/` | Modules for tasks, teams, projects, etc. |
-| `templates/` | Web pages for flask application |
-| `config.py/` | Config script for environmental variables
+| File/Directory | Function                                      |
+|----------------|-----------------------------------------------|
+| `app.py`       | Flask app file                                |
+| `users/`       | User and authentication-related functionality |
+| `resources/`   | Modules for tasks, teams, projects, etc.      |
+| `pages/`       | Module for static pages and error pages       |
+| `models/`      | Database models                               |
+| `static/`      | Frontend components and resources             |
+| `templates/`   | Web pages for the Flask application           |
+| `config.py`    | Config script for environmental variables     |
 
-## Usage
-For development:
+## Installation
 * Create your own virtual environment
 ```bash
 python3 -m venv .venv
@@ -23,8 +22,7 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-  NOTE: If you are using windows before running  `activate` run this line:
-
+  NOTE: If you are using windows before running `activate` run this line:
 
 ```powershell
 Set-ExecutionPolicy Unrestricted -Scope Process
@@ -37,14 +35,13 @@ npm install
 
 
 * Create your own `.env` file with the following variable names:
-    | Field                     | Description                              |
-    |---------------------------|------------------------------------------|
-    | `DATABASE_URI`            | The URI of the database for `SQLAlchemy` |
-    | `SECRET_KEY`              | The secret key for `sqlite` usage        |
-    | ` SECURITY_PASSWORD_SALT` | The salt for encryption for passwords    |
+  | Field                    | Description                              |
+  |--------------------------|------------------------------------------|
+  | `DATABASE_URI`           | The URI of the database for `SQLAlchemy` |
+  | `SECRET_KEY`             | The secret key for `sqlite` usage        |
+  | `SECURITY_PASSWORD_SALT` | The salt for encryption for passwords    |
 
-    You can run the app using `flask run`.
-    NOTE: It is advisable to use a virtual environment for developing your project.
+  You can run the app using `flask run`.
 
 ## API
 ### Authentication Routes
