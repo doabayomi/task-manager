@@ -1,10 +1,17 @@
 pycodestyle
 flask
+
+# Config
 python-dotenv
+
+# Database
 flask-sqlalchemy
 flask-migrate
+
+# Security
 flask-security-too
-# wtforms
+argon2_cffi 
 setuptools
-argon2_cffi
-flask-restful
+
+flask-restful  # API handling
+marshmallow  # Validation, serializing and deserialization
