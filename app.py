@@ -7,7 +7,7 @@ from flask_restful import Api
 from config import Config
 
 from models import db
-from tasks import TaskResource
+from resources import TaskResource
 
 
 def create_app(config_object=Config):
