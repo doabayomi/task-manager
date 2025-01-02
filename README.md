@@ -9,6 +9,10 @@ Backend codebase for task manager project
 | `auth/`        | Module for authentication               |
 | `pages/`       | Module for static pages and error pages |
 | `models/`      | Module for db models                    |
+| `static/` | Frontend components and resources |
+| `resources/` | Modules for tasks, teams, projects, etc. |
+| `templates/` | Web pages for flask application |
+| `config.py/` | Config script for environmental variables
 
 ## Usage
 For development:

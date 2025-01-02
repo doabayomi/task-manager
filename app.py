@@ -37,7 +37,7 @@ def create_app(config_object=Config):
     api = Api(app)
     api.add_resource(TaskResource, '/tasks', '/tasks/<int:task_id>')
 
-    from auth import auth_blueprint
+    from user import auth_blueprint
     from pages import pages_blueprint
     app.register_blueprint(pages_blueprint)
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
