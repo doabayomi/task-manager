@@ -13,7 +13,6 @@ from .import api
 
 class TaskResource(Resource):
     # TODO: Uncomment below to add authentication decorator to resource.
-    # ? method_decorators vs decorators
     # method_decorators = [auth_required]
     def get(self, task_id=None):
         """
