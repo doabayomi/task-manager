@@ -56,7 +56,7 @@ npx linthtml 'yourfile.html'
 * `/auth/profile`
 
 ### Task Endpoints
-* **POST /tasks**: Creates a new task for the authenticated user
+**POST /tasks**: Creates a new task for the authenticated user
 
 ```json
 // Sample request
@@ -81,7 +81,7 @@ npx linthtml 'yourfile.html'
 }
 ```
 
-* **GET /tasks** OR **GET /tasks/<task_id>**: Retrieves all tasks for the authenticated user or a particular task based on id
+**GET /tasks** OR **GET /tasks/<task_id>**: Retrieves all tasks for the authenticated user or a particular task based on id
 ```json
 // Sample response to GET /tasks, 200 status code
 [
@@ -107,7 +107,8 @@ npx linthtml 'yourfile.html'
   "user_id": 1
 }
 ```
-* **PUT /tasks/<task_id>**: Updates a task for the user
+
+**PUT /tasks/<task_id>**: Updates a task for the user
 ```json
 // Sample request
 {
@@ -120,7 +121,8 @@ npx linthtml 'yourfile.html'
   "message": "Task updated successfully."
 }
 ```
-* **DELETE /tasks/<task_id>**: Deletes a task for the authenticated user.
+
+**DELETE /tasks/<task_id>**: Deletes a task for the authenticated user.
 
 ```json
 // Sample success response 200
