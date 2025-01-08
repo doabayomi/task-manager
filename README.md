@@ -1,5 +1,10 @@
 # Task Manager App
 ALX porfolio webstack project
+[File Structure](#file-structure)
+[Installation](#installation)
+[API](#api)
+  [Authentication API](#authentication-endpoints)
+  [Tasks API](#task-endpoints)
 
 
 ## File Structure
