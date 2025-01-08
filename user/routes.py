@@ -3,6 +3,9 @@ from . import auth_blueprint
 from models import db
 from models.user import User
 
+from marshmallow import ValidationError
+from schemas import UserSchema
+
 from flask import (
     current_app as app,
     request, jsonify, redirect, url_for
@@ -23,8 +26,15 @@ def register():
     """Signs up a user"""
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
-        email = request.form.get('email')
-        password = request.form.get('password')
+        user_data = request.form.to_dict()
+
+        try:
+            schema = UserSchema()
+            valid_user_data = schema.load(user_data)
+            email = valid_user_data['email']
+            password = valid_user_data['password']
+        except ValidationError as err:
+            return jsonify(err.messages), 400
 
         # TODO: validation for email and password.
         user = user_datastore.create_user(email=email,
@@ -79,14 +89,24 @@ def profile():
     elif request.method == 'POST':
         # ? Turns out there is no direct flask-security method for
         # ? updating user profiles.
-        # TODO: Email validation
-        if request.form.get('email') is not None:
-            new_email = request.form.get('email')
+        try:
+            schema = UserSchema()
+            user_data = schema.load(request.form.to_dict(), partial=True)
+        except ValidationError as err:
+            return jsonify(err.messages), 400
+
+        if 'new_password' in user_data:
+            hashed_new_password = hash_password(user_data['new_password'])
+            user_data['password'] = hashed_new_password
+            user_data.pop('new_password')
 
         with app.app_context():
             user = User.query.filter_by(email=user_in_session.email).first()
-            if user:
-                user.email = new_email
-                db.session.commit()
+            if not user:
+                return jsonify({'message': 'User not found'}), 404
 
-        return jsonify({'message': 'Profile successfully created'})
+            for field, value in user_data.items():
+                setattr(user, field, value)
+            db.session.commit()
+
+        return jsonify({'message': 'Profile successfully updated'})
