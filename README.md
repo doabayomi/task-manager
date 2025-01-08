@@ -49,14 +49,71 @@ npx linthtml 'yourfile.html'
 * You can then run the app using `flask run`.
 
 ## API
-### Authentication Routes
-* `/auth/login`
-* `/auth/register`
-* `/auth/logout`
-* `/auth/profile`
+### Authentication Endpoints
+**POST `/auth/login`**: Logs in a user
+```json
+// Sample request
+{
+  "email": "user@email.com",
+  "password": "Somepassword2"
+}
+
+// Sample response body, 200
+{
+  "message": "Login successful"
+}
+
+// Header Response
+// Set-Cookie: Cookie: session=.eJwljkF.......gXcw; HttpOnly ...
+```
+**POST `/auth/register`**: Registers a new user
+```json
+// Sample request
+{
+  "email": "user@email.com",
+  "password": "Somepassword2"
+}
+
+// Sample response body, 200
+{
+  "message": "User created",
+  "email": "user@email.com"
+}
+```
+
+**POST `/auth/logout`**: Logs out an authenticated user
+```json
+// Sample response body, 200
+{
+  "message": "Logout successful"
+}
+```
+
+**POST `/auth/profile`**: Updates an authenticated user's profile
+```json
+// Sample request
+{
+  "email": "user@email.com",
+  "password": "Somepassword1",
+  "new_password": "Newpassword2"
+}
+
+// Sample response body, 200
+{
+  "message": "Profile successfully updated"
+}
+```
+
+**GET `/auth/profile`**: Gets an authenticated user's profile
+```json
+// Sample response body, 200
+{
+  "email": "user@email.com"
+}
+```
 
 ### Task Endpoints
-**POST /tasks**: Creates a new task for the authenticated user
+**POST `/tasks`**: Creates a new task for the authenticated user
 
 ```json
 // Sample request
@@ -81,7 +138,7 @@ npx linthtml 'yourfile.html'
 }
 ```
 
-**GET /tasks** OR **GET /tasks/<task_id>**: Retrieves all tasks for the authenticated user or a particular task based on id
+**GET `/tasks`** OR **GET `/tasks/<task_id>`**: Retrieves all tasks for the authenticated user or a particular task based on id
 ```json
 // Sample response to GET /tasks, 200 status code
 [
@@ -108,7 +165,7 @@ npx linthtml 'yourfile.html'
 }
 ```
 
-**PUT /tasks/<task_id>**: Updates a task for the user
+**PUT `/tasks/<task_id>`**: Updates a task for the user
 ```json
 // Sample request
 {
@@ -122,7 +179,7 @@ npx linthtml 'yourfile.html'
 }
 ```
 
-**DELETE /tasks/<task_id>**: Deletes a task for the authenticated user.
+**DELETE `/tasks/<task_id>`**: Deletes a task for the authenticated user.
 
 ```json
 // Sample success response 200
