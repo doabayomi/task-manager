@@ -1,0 +1,50 @@
+// Sidebar Component
+<sidebar>
+  <div>
+    <ul>
+      <li each="item in items" class="{ item.active }" onclick="select(item)">
+        <span>{item.icon}</span>
+      </li>
+    </ul>
+  </div>
+
+  <style>
+    nav {
+      background-color: #f9df56;
+      width: 80px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    li {
+      list-style: none;
+      margin: 15px 0;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: #000;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+    }
+  </style>
+
+  <script>
+    export default {
+      props: {
+        items: [
+          { icon: "🏠", active: true },
+          { icon: "🔗", active: false },
+          { icon: "⚙️", active: false },
+        ],
+      },
+      select(item) {
+        this.update({
+          items: this.items.map((i) => ({ ...i, active: i === item })),
+        });
+      },
+    };
+  </script>
+</sidebar>

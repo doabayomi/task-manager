@@ -1,0 +1,52 @@
+<task-card>
+  <div class="card" style="background-color: {bgColor};">
+    <p class="time">{time} | {date}</p>
+    <h3>{title}</h3>
+    <p class="description">{description}</p>
+    <p class="priority {priority.toLowerCase()}">{priority}</p>
+    <button class="action" onclick="actionClick()">↗</button>
+  </div>
+
+  <style>
+    .card {
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      position: relative;
+    }
+    .priority {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .priority.high {
+      color: red;
+    }
+    .priority.medium {
+      color: orange;
+    }
+    .priority.low {
+      color: green;
+    }
+    .action {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+
+  <script>
+    export default {
+      props: {
+        time: "5:21 PM",
+        date: "12/24/14",
+        title: "Task Title",
+        description: "Task description...",
+        priority: "High", // High, Medium, Low
+        bgColor: "#f28b82",
+      },
+      actionClick() {
+        console.log("Action clicked for:", this.title);
+      },
+    };
+  </script>
+</task-card>

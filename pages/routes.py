@@ -1,9 +1,7 @@
-from flask import jsonify
-from .import pages_blueprint
+from flask import send_from_directory
+from . import pages_blueprint
 
 
 @pages_blueprint.route('/')
-def welcome():
-    return jsonify({
-        'message': 'Hello world'
-    }), 200
+def root():
+    return send_from_directory("static", "index.html"), 200

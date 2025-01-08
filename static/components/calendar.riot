@@ -1,0 +1,24 @@
+<calendar>
+  <div class="calendar">
+    <h2>{month}, {year}</h2>
+    <p>Calendar view here</p>
+  </div>
+
+  <style>
+    .calendar {
+      border: 2px dashed #ddd;
+      padding: 20px;
+      text-align: center;
+      height: 300px;
+    }
+  </style>
+
+  <script>
+    export default {
+      props: {
+        month: "May",
+        year: 2023,
+      },
+    };
+  </script>
+</calendar>
