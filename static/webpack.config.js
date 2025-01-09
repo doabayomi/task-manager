@@ -1,33 +1,47 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './main.js', // Entry point
+  entry: path.resolve(__dirname, 'main.js'), // Entry point for the JS files
   output: {
-    path: path.resolve(__dirname, 'js'), // Output directory
-    filename: 'bundle.js', // Output file name
+    path: path.resolve(__dirname, 'dist'), // Output directory for JavaScript and CSS files
+    filename: 'bundle.js', // The output file for JavaScript
   },
   module: {
     rules: [
+      // Handling .riot files
       {
-        test: /\.riot$/, // Process .riot files
-	include : [
-          path.resolve(__dirname, 'comoonents'),
-          path.resolve(__dirname, '.'),
-	],
+        test: /\.riot$/,
+        include: [
+          path.resolve(__dirname, 'components'), // Include components directory
+        ],
         use: [
           {
             loader: '@riotjs/webpack-loader',
           },
         ],
       },
+      // Handling .css files
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader, // Extracts CSS into its own file
+          'css-loader', // Resolves imports in CSS files
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.riot'], // Resolve these extensions
+    extensions: ['.js', '.riot'], // Resolve JavaScript and Riot extensions
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css', // Output the CSS file
+    }),
+  ],
   devServer: {
-    static: path.resolve(__dirname, 'static'), // Serve files from dist
+    static: path.resolve(__dirname), // Serve static files from the current directory
     port: 8080, // Development server port
   },
-  mode: 'development', // Mode (can be 'production' for optimized builds)
+  mode: 'development', // Development mode (set to 'production' for production builds)
 };

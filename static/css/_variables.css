@@ -1,0 +1,11 @@
+/* Reusable colors and font styles */
+:root {
+  --bg-dark: #181c1f;
+  --bg-light: #0f0f0f;
+  --primary-color: #FFF97D;
+  --secondary-color: #6B64FF;
+  --text-light: white;
+  --text-muted: #858585;
+  --border-radius: 10px;
+  --font-main: "Poppins", sans-serif;
+}

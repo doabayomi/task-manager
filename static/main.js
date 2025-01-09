@@ -1,3 +1,4 @@
+import './css/main.css';
 import * as riot from 'riot';
 import App from './app.riot';
 

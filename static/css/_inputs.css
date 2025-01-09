@@ -1,0 +1,21 @@
+/* _inputs.css */
+.input-group {
+  display: flex;
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+}
+
+.input-group div {
+  padding: 14px;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  color: var(--text-light);
+}
