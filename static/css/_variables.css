@@ -1,5 +1,6 @@
 /* Reusable colors and font styles */
 :root {
+  --window-bg-dark: #0F1012;
   --bg-dark: #181c1f;
   --bg-light: #0f0f0f;
   --primary-color: #FFF97D;

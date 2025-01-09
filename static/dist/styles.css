@@ -364,6 +364,7 @@ template {
   \**********************************************************************/
 /* Reusable colors and font styles */
 :root {
+  --window-bg-dark: #0F1012;
   --bg-dark: #181c1f;
   --bg-light: #0f0f0f;
   --primary-color: #FFF97D;
@@ -381,7 +382,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-main);
-  background-color: var(--bg-dark);
+  background-color: var(--window-bg-dark);
   color: var(--text-light);
 }
 
@@ -429,8 +430,6 @@ button.secondary {
   background-color: var(--bg-dark);
   padding: 32px;
   border-radius: 20px;
-  width: 100%;
-  max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 

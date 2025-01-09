@@ -7,13 +7,13 @@
 }
 
 .input-group div {
-  padding: 14px;
+  padding: 14px 0px 14px 14px;
 }
 
 .input-group input {
   flex: 1;
   border: none;
-  padding: 14px;
+  padding: 14px 14px 14px 0px;
   font-size: 16px;
   border-radius: var(--border-radius);
   background-color: transparent;
