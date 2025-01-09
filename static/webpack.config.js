@@ -33,6 +33,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.riot'], // Resolve JavaScript and Riot extensions
+    alias: {
+      '@components': path.resolve(__dirname, 'components'),  // Giving a name to easily import components instead of relative imports
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({
