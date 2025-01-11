@@ -1,0 +1,50 @@
+<login-form>
+  <div class="card Cell -5of12">
+    <div class="card-header">
+      <h1>Welcome Back</h1>
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>
+    <form onsubmit={handleSubmit}>
+      <input-field type="text" placeholder="Email Address">
+        <span slot="icon">✉️</span>
+      </input-field>
+      <input-field type="password" placeholder="Password">
+        <span slot="icon">🔒</span>
+      </input-field>
+      <app-button class="primary" type="submit">Sign In</app-button>
+    </form>
+    <div class="divider">OR</div>
+    <app-button class="secondary" onclick={signInAsGuest}>Sign In as Guest</app-button>
+  </div>
+
+  <script>
+    import InputField from '@components/common/input-field.riot';
+    import AppButton from '@components/common/app-button.riot';
+
+    export default {
+      components: {
+        InputField,
+        AppButton
+      },
+      methods: {
+        handleSubmit(e) {
+          e.preventDefault();
+          const email = this.$("input[type='text']").value.trim();
+          const password = this.$("input[type='password']").value.trim();
+
+          if (!email || !password) {
+            alert("Both fields are required!");
+            return;
+          }
+
+          console.log("Form submitted:", { email, password });
+          // call an api here
+        },
+        signInAsGuest() {
+          console.log("Signing in as guest...");
+          // You would probably want to call an API here to sign in as a guest
+        }
+      }
+    };
+  </script>
+</login-form>

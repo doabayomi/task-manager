@@ -1,43 +1,96 @@
-from flask import jsonify, request
-from flask_security import auth_required
+from flask import request
+from flask_security import auth_required, current_user
 from flask_restful import Resource
+
 from models import db
 from models.task import Task
 
+from marshmallow import ValidationError
+from schemas import TaskSchema
+
+from .import api
+
 
 class TaskResource(Resource):
-    # @auth_required()
-    # TODO: serialize data helper function
+    """Resource for performing operations on tasks."""
+    @auth_required()
     def get(self, task_id=None):
+        """
+        GET /tasks
+        GET /tasks/<task_id>
+        """
         if task_id:
-            task = Task.query.filter(Task.id == task_id).first()
+            task = Task.query.filter_by(id=task_id,
+                                        user_id=current_user.id).first()
             if not task:
-                return jsonify({'message': 'Task not found'}), 404
-            return jsonify(task)
-        tasks = Task.query.all()
-        return jsonify(tasks)
+                return {'message': 'Task not found'}, 404
+            schema = TaskSchema()
+            return schema.dump(task)
 
+        tasks = current_user.tasks
+        schema = TaskSchema(many=True)
+        return schema.dump(tasks)
+
+    @auth_required()
     def post(self):
-        data = request.get_json()
-        new_task = Task(name=data['name'])
-        if data['description']:
-            new_task.deadline = data['description']
-        if data['deadline']:
-            new_task.deadline = data['deadline']  # make datetime format same
+        """POST /tasks"""
+        if request.is_json:
+            data = request.get_json()
+        else:
+            data = request.form.to_dict()
+
+        if not data.get('user_id'):
+            data['user_id'] = current_user.id
+
+        try:
+            schema = TaskSchema()
+            validated_data = schema.load(data)
+            new_task = Task(**validated_data)
+        except ValidationError as e:
+            return {'errors': e.messages}, 400
 
         db.session.add(new_task)
         db.session.commit()
 
-        return jsonify(new_task), 201
+        return schema.dump(new_task), 201
 
+    @auth_required()
     def put(self, task_id):
-        # TODO: check if id exists in db
-        pass
+        """PUT /tasks/<task_id>"""
+        task = Task.query.filter_by(id=task_id,
+                                    user_id=current_user.id).first()
+        if not task:
+            return {'message': 'Task does not exist'}, 404
 
+        if request.is_json:
+            data = request.get_json()
+        else:
+            data = request.form.to_dict()
+
+        if not data.get('user_id'):
+            data['user_id'] = current_user.id
+
+        try:
+            schema = TaskSchema()
+            validated_data: dict = schema.load(data)
+            for field, value in validated_data.items():
+                setattr(task, field, value)
+        except ValidationError as e:
+            return {'errors': e.messages}, 400
+
+        db.session.commit()
+        return schema.dump(task), 200
+
+    @auth_required()
     def delete(self, task_id):
-        task = Task.query.get(task_id)
+        """DELETE /task/<task_id>"""
+        task = Task.query.filter_by(id=task_id,
+                                    user_id=current_user.id).first()
         if task:
             db.session.delete(task)
             db.session.commit()
-            return jsonify({f'message': 'Task {task_id} deleted'})
-        return jsonify({'message': 'Task not found'}), 404
+            return {'message': f'Task {task_id} deleted'}
+        return {'message': 'Task not found'}, 404
+
+
+api.add_resource(TaskResource, '/tasks', '/tasks/<int:task_id>')

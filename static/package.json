@@ -1,7 +1,13 @@
 {
   "dependencies": {
     "@riotjs/cli": "^9.0.5",
-    "riot": "^9.4.4"
+    "css-loader": "^6.11.0",
+    "grd": "^1.4.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "normalize.css": "^8.0.1",
+    "riot": "^9.4.4",
+    "riot-loader": "^1.0.0",
+    "style-loader": "^4.0.0"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
