@@ -4,7 +4,8 @@
     "riot": "^9.4.4"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
     "@riotjs/webpack-loader": "^9.0.1",
