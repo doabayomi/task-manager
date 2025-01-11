@@ -1,21 +1,22 @@
 // Dashboard Layout Component
 <dashboard>
   <div class="dashboard">
-    <sidebar></sidebar>
+   <sidebar></sidebar>
     <div class="main">
       <h1>Pending Tasks (5)</h1>
       <div class="task-list">
-        <task-card each="task in tasks" title="{task.title}" priority="{task.priority}" description="{task.description}" bg-color="{task.bgColor}"></task-card>
+        <!-- <task-card each="task in tasks" title="{task.title}" priority="{task.priority}" description="{task.description}" bg-color="{task.bgColor}"></task-card> -->
       </div>
-      <calendar-view></calendar-view>
-      <add-task-button></add-task-button>
-      <task-statistics></task-statistics>
+      <!-- <calendar></calendar> -->
+      <!-- <add-task-button></add-task-button> -->
     </div>
   </div>
 
   <style>
     .dashboard {
       display: flex;
+      height: 100vh;
+      padding: 5px;
     }
     .main {
       flex: 1;
@@ -30,14 +31,14 @@
   <script>
     import Sidebar from './sidebar.riot';
     import TaskCard from './task-card.riot';
-    import CalendarView from './calendar.riot';
+    import Calendar from './calendar.riot';
     import AddTaskButton from './add-task-button.riot';
 
     export default {
       components: {
         Sidebar,
         TaskCard,
-        CalendarView,
+        Calendar,
         AddTaskButton,
       },
       props: {
