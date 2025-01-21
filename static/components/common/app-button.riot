@@ -1,5 +1,5 @@
 <app-button>
-  <button class={props.class} type={props.type} onclick={props.handleClick}>
+  <button class={props.class} type={props.type} id={props.id}>
     <slot />
   </button>
 
@@ -8,11 +8,14 @@
     props: {
       class: "secondary",
       type: "button",
-      onclick: null,
+      id: "",
     },
-    handleClick(e) {
-      if (this.props.onclick) this.props.onclick(e);
-    },
+    onMounted() {
+      // Strip props from the root element (if necessary)
+      Object.keys(this.props).forEach(attr => {
+        this.root.removeAttribute(attr);
+      });
+    }
   };
   </script>
 </app-button>

@@ -7,7 +7,7 @@
 }
 
 .input-group div {
-  padding: 14px 0px 14px 14px;
+  padding: 14px;
 }
 
 .input-group input {
@@ -18,4 +18,9 @@
   border-radius: var(--border-radius);
   background-color: transparent;
   color: var(--text-light);
+}
+
+/* Styling the riot input component to handle full-widths */
+input-field {
+  width: auto;
 }

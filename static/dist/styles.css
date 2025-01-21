@@ -449,6 +449,11 @@ button.secondary {
   color: var(--text-muted);
 }
 
+.full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /*!*******************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./css/_inputs.css ***!
   \*******************************************************************/
@@ -467,13 +472,17 @@ button.secondary {
 .input-group input {
   flex: 1;
   border: none;
-  padding: 14px;
+  padding: 14px 14px 14px 0px;
   font-size: 16px;
   border-radius: var(--border-radius);
   background-color: transparent;
   color: var(--text-light);
 }
 
+/* Styling the riot input component to handle full-widths */
+input-field {
+  width: auto;
+}
 /*!********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./css/_divider.css ***!
   \********************************************************************/
