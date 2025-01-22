@@ -16,7 +16,7 @@
   \*****************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/main.css */ \"./css/main.css\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/register.js\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/mount.js\");\n\r\n\r\n\r\nconst page = document.body.getAttribute('data-page');\r\n\r\nswitch (page) {\r\n  \r\n  case 'home':\r\n    __webpack_require__.e(/*! import() */ \"components_home_riot\").then(__webpack_require__.bind(__webpack_require__, /*! @components/home.riot */ \"./components/home.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app'); // Mount the component\r\n    }).catch((error) => {\r\n      console.error('Error loading home component:', error);\r\n    });\r\n    break;\r\n  \r\n  case 'login':\r\n    __webpack_require__.e(/*! import() */ \"components_authentication_login-form_riot\").then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/login-form.riot */ \"./components/authentication/login-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  // As many pages as needed we can just export the components to it.\r\n  default:\r\n    break;\r\n}\r\n\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/main.css */ \"./css/main.css\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/register.js\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/mount.js\");\n\r\n\r\n\r\nconst page = document.body.getAttribute('data-page');\r\n\r\nswitch (page) {\r\n  \r\n  case 'home':\r\n    __webpack_require__.e(/*! import() */ \"components_home_riot\").then(__webpack_require__.bind(__webpack_require__, /*! @components/home.riot */ \"./components/home.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app'); // Mount the component\r\n    }).catch((error) => {\r\n      console.error('Error loading home component:', error);\r\n    });\r\n    break;\r\n  \r\n  case 'login':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_validator_index_js\"), __webpack_require__.e(\"components_authentication_login-form_riot\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/login-form.riot */ \"./components/authentication/login-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  // As many pages as needed we can just export the components to it.\r\n  default:\r\n    break;\r\n}\r\n\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 
@@ -420,6 +420,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports

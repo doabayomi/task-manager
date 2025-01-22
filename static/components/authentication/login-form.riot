@@ -27,6 +27,7 @@
       <div class="divider">OR</div>
       <!-- Sign in as guest button -->
       <app-button class="secondary full-width" type="button" id="guestBtn">Sign In as Guest</app-button>
+      <div class="alert-danger" id="loginErrorBox"></div>
     </div>
   </div>
 
@@ -46,6 +47,8 @@
         const email = this.$('form').elements['email'].value.trim();
         const password = this.$('form').elements['password'].value.trim();
         const submitBtn = this.$('#loginSubmitBtn');
+        const errorBox = this.$('#loginErrorBox');
+
         console.log('Received details');
 
         // Disable button and show loader
@@ -54,14 +57,14 @@
 
         // Validate form fields
         if (!validator.isEmail(email)) {
-          alert('Invalid email address');
+          errorBox.innerHTML = 'Invalid email address';
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Sign In';
           return;
         }
 
         if (validator.isEmpty(password)) {
-          alert('Password is required');
+          errorBox.innerHTML = 'Password is required';
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Sign In';
           return;
@@ -84,7 +87,7 @@
             window.location.href = '/dashboard';
           } else {
             // Handle login failure (e.g., invalid credentials)
-            alert(data.message || 'Login failed');
+            errorBox.innerHTML = data.message || 'Login failed';
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Sign In'; // Restore button text
           }
