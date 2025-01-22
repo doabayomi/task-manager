@@ -26,7 +26,10 @@ def register():
     """Signs up a user"""
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
-        user_data = request.form.to_dict()
+        if request.is_json:
+            user_data = request.get_json()
+        else:
+            user_data = request.form.to_dict()
 
         try:
             schema = UserSchema()
@@ -52,8 +55,13 @@ def login():
         user_datastore: Datastore = app.extensions['security'].datastore
 
         # TODO: update email and password collection logic for validation
-        email = request.form.get('email')
-        password = request.form.get('password')
+        if request.is_json:
+            data = request.get_json()
+            email = data.get('email')
+            password = data.get('password')
+        else:
+            email = request.form.get('email')
+            password = request.form.get('password')
 
         user = user_datastore.find_user(email=email)
         if user is None:
