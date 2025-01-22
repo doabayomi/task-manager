@@ -2,9 +2,9 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./css/main.css ***!
   \****************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
-/*!********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/normalize.css/normalize.css ***!
-  \********************************************************************************************/
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./css/normalize.css ***!
+  \*********************************************************************/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -461,13 +461,13 @@ button.secondary {
 }
 
 .input-group div {
-  padding: 14px;
+  padding: 14px 0px 14px 14px;
 }
 
 .input-group input {
   flex: 1;
   border: none;
-  padding: 14px;
+  padding: 14px 14px 14px 0px;
   font-size: 16px;
   border-radius: var(--border-radius);
   background-color: transparent;

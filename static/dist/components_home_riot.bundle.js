@@ -15,7 +15,7 @@
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\r\n  css: null,\r\n  exports: {},\r\n\r\n  template: (\r\n    template,\r\n    expressionTypes,\r\n    bindingTypes,\r\n    getComponent\r\n  ) => template(\r\n    '<div><h1>An <span>web application</span> for all your tasks...</h1></div>',\r\n    []\r\n  ),\r\n\r\n  name: 'home'\r\n});\n\n//# sourceURL=webpack:///./components/home.riot?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: null,\n  exports: {},\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div><h1>An <span>web application</span> for all your tasks...</h1></div>',\n    []\n  ),\n\n  name: 'home'\n});\n\n//# sourceURL=webpack:///./components/home.riot?");
 
 /***/ })
 

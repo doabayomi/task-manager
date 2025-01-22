@@ -3,6 +3,10 @@ import * as riot from 'riot';
 
 const page = document.body.getAttribute('data-page');
 
+import Dashboard from '@components/dashboard/dashboard.riot';
+
+console.log("dashboard:", Dashboard);
+
 switch (page) {
   
   case 'home':
@@ -16,14 +20,25 @@ switch (page) {
   
   case 'login':
     import('@components/authentication/login-form.riot').then((module) => {
-      riot.register('app', module.default);
+      console.log(riot.register('app', module.default));
       riot.mount('app');
     }).catch((error) => {
       console.error('Error loading page:', error)
     })
     break;
   
+  case 'dashboard':
+    import('@components/dashboard/dashboard.riot').then((module) => {
+      console.log("module:", module.default);
+      riot.register('app', Dashboard);
+      //riot.register('app', module.default);
+      riot.mount('app', {}, 'dashboard');
+    }).catch((error) => {
+      console.error('Error loading dashboard component:', error)
+    })
+    break;
+
   // As many pages as needed we can just export the components to it.
   default:
-    break;
+    console.error("the page name is not associted with any component");
 }
