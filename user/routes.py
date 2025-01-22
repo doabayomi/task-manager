@@ -39,7 +39,10 @@ def register():
         except ValidationError as err:
             return jsonify(err.messages), 400
 
-        # TODO: validation for email and password.
+        user = user_datastore.find_user(email=email)
+        if user is not None:
+            return jsonify({'message': 'User already exists'}), 409
+
         user = user_datastore.create_user(email=email,
                                           password=hash_password(password))
         user_datastore.commit()
