@@ -76,7 +76,7 @@ def login():
 
         if login_user(user):
             user_datastore.commit()
-            return jsonify({'message': 'Login successful'})
+            return jsonify({'message': 'Login successful'}), 200
         else:
             return jsonify({'message': 'Login failed'}), 500
 
