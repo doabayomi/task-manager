@@ -1,11 +1,11 @@
 .lds-dual-ring {
   /* change color here */
-  color: var(--primary-color);
+  color: var(--bg-dark);
 }
 
 .lds-dual-ring,
 .lds-dual-ring:after {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .lds-dual-ring {
@@ -16,9 +16,9 @@
 .lds-dual-ring:after {
   content: " ";
   display: block;
-  width: 15px;
-  height: 15px;
-  margin: 8px;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
   border-radius: 50%;
   border: 2px solid currentColor;
   border-color: currentColor transparent currentColor transparent;
