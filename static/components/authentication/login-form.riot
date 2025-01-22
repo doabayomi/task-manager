@@ -1,6 +1,6 @@
 <login-form>
   <div class=" container Grid -middle -center">
-    <div class="card Cell -5of12">
+    <div class="card Cell -4of12">
 
       <div class="card-header">
         <!-- Icon header -->
@@ -17,6 +17,7 @@
         <input-field type="password" placeholder="Password" name="password">
           <span slot="icon">🔒</span>
         </input-field>
+        <!-- // TODO: show password toggling that is non-browser dependent -->
 
         <!-- Sign in button -->
         <app-button class="primary full-width" type="submit" id="loginSubmitBtn">
@@ -53,7 +54,7 @@
 
         // Disable button and show loader
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<div class="lds-dual-ring"></div>'; // Loader
+        submitBtn.innerHTML = '<div class="lds-dual-ring"></div>';
 
         // Validate form fields
         if (!validator.isEmail(email)) {
@@ -80,29 +81,29 @@
             body: JSON.stringify({ email, password }),
           });
 
-          const data = await response.json();
 
-          if (data.success) {
+          if (response.ok) {
             // Redirect to dashboard on success
             window.location.href = '/dashboard';
           } else {
             // Handle login failure (e.g., invalid credentials)
+            const data = await response.json();
             errorBox.innerHTML = data.message || 'Login failed';
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Sign In'; // Restore button text
           }
         } catch (error) {
           console.error('Error during login:', error);
-          alert('An error occurred. Please try again.');
+          errorBox.innerHTML = 'An error occurred. Please try again.';
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Sign In'; // Restore button text
         }
       },
       onMounted() {
+        // TODO: add delayed masking
         const form = this.$('#loginForm');
         if (form) {
-          form.addEventListener('submit', this.handleSubmit); // Ensure the form's submit event is properly handled
-          console.log('Successfully mounted');
+          form.addEventListener('submit', this.handleSubmit); 
         }
       }
     };
