@@ -1,48 +1,108 @@
 <login-form>
-  <div class="card Cell -5of12">
-    <div class="card-header">
-      <h1>Welcome Back</h1>
-      <p>Don't have an account? <a href="#">Register</a></p>
+  <div class=" container Grid -middle -center">
+    <div class="card Cell -5of12">
+
+      <div class="card-header">
+        <!-- Icon header -->
+        <h1>Welcome Back</h1>
+        <p>Don't have an account? <a href="/register">Register</a></p>
+      </div>
+
+      <form id="loginForm">
+        <!-- Input fields -->
+        <input-field type="email" placeholder="Email Address" name="email">
+          <span slot="icon">✉️</span>
+        </input-field>
+
+        <input-field type="password" placeholder="Password" name="password">
+          <span slot="icon">🔒</span>
+        </input-field>
+
+        <!-- Sign in button -->
+        <app-button class="primary full-width" type="submit" id="loginSubmitBtn">
+          Sign In
+        </app-button>
+      </form>
+
+      <div class="divider">OR</div>
+      <!-- Sign in as guest button -->
+      <app-button class="secondary full-width" type="button" id="guestBtn">Sign In as Guest</app-button>
+      <div class="alert-danger" id="loginErrorBox"></div>
     </div>
-    <form onsubmit={handleSubmit}>
-      <input-field type="text" placeholder="Email Address">
-        <span slot="icon">✉️</span>
-      </input-field>
-      <input-field type="password" placeholder="Password">
-        <span slot="icon">🔒</span>
-      </input-field>
-      <app-button class="primary" type="submit">Sign In</app-button>
-    </form>
-    <div class="divider">OR</div>
-    <app-button class="secondary" onclick={signInAsGuest}>Sign In as Guest</app-button>
   </div>
 
   <script>
     import InputField from '@components/common/input-field.riot';
     import AppButton from '@components/common/app-button.riot';
+    import validator from 'validator';
 
     export default {
       components: {
         InputField,
         AppButton
       },
-      methods: {
-        handleSubmit(e) {
-          e.preventDefault();
-          const email = this.$("input[type='text']").value.trim();
-          const password = this.$("input[type='password']").value.trim();
+      async handleSubmit(e) {
+        e.preventDefault(); // Prevent default form submission
 
-          if (!email || !password) {
-            alert("Both fields are required!");
-            return;
+        const email = this.$('form').elements['email'].value.trim();
+        const password = this.$('form').elements['password'].value.trim();
+        const submitBtn = this.$('#loginSubmitBtn');
+        const errorBox = this.$('#loginErrorBox');
+
+        console.log('Received details');
+
+        // Disable button and show loader
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<div class="lds-dual-ring"></div>'; // Loader
+
+        // Validate form fields
+        if (!validator.isEmail(email)) {
+          errorBox.innerHTML = 'Invalid email address';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Sign In';
+          return;
+        }
+
+        if (validator.isEmpty(password)) {
+          errorBox.innerHTML = 'Password is required';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Sign In';
+          return;
+        }
+
+        // Send POST request to Flask backend
+        try {
+          const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            // Redirect to dashboard on success
+            window.location.href = '/dashboard';
+          } else {
+            // Handle login failure (e.g., invalid credentials)
+            errorBox.innerHTML = data.message || 'Login failed';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Sign In'; // Restore button text
           }
-
-          console.log("Form submitted:", { email, password });
-          // call an api here
-        },
-        signInAsGuest() {
-          console.log("Signing in as guest...");
-          // You would probably want to call an API here to sign in as a guest
+        } catch (error) {
+          console.error('Error during login:', error);
+          alert('An error occurred. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Sign In'; // Restore button text
+        }
+      },
+      onMounted() {
+        const form = this.$('#loginForm');
+        if (form) {
+          form.addEventListener('submit', this.handleSubmit); // Ensure the form's submit event is properly handled
+          console.log('Successfully mounted');
         }
       }
     };

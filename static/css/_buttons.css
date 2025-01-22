@@ -17,3 +17,7 @@ button.secondary {
   background-color: var(--secondary-color);
   color: var(--text-light);
 }
+
+button:disabled, button[disabled] {
+  opacity: 0.3;
+}

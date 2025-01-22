@@ -1,0 +1,8 @@
+.alert-danger {
+  color: #c24a4a;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}

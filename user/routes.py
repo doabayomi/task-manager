@@ -26,7 +26,10 @@ def register():
     """Signs up a user"""
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
-        user_data = request.form.to_dict()
+        if request.is_json:
+            user_data = request.get_json()
+        else:
+            user_data = request.form.to_dict()
 
         try:
             schema = UserSchema()
@@ -36,7 +39,10 @@ def register():
         except ValidationError as err:
             return jsonify(err.messages), 400
 
-        # TODO: validation for email and password.
+        user = user_datastore.find_user(email=email)
+        if user is not None:
+            return jsonify({'message': 'User already exists'}), 409
+
         user = user_datastore.create_user(email=email,
                                           password=hash_password(password))
         user_datastore.commit()
@@ -52,8 +58,13 @@ def login():
         user_datastore: Datastore = app.extensions['security'].datastore
 
         # TODO: update email and password collection logic for validation
-        email = request.form.get('email')
-        password = request.form.get('password')
+        if request.is_json:
+            data = request.get_json()
+            email = data.get('email')
+            password = data.get('password')
+        else:
+            email = request.form.get('email')
+            password = request.form.get('password')
 
         user = user_datastore.find_user(email=email)
         if user is None:
@@ -65,7 +76,7 @@ def login():
 
         if login_user(user):
             user_datastore.commit()
-            return jsonify({'message': 'Login successful'})
+            return jsonify({'message': 'Login successful'}), 200
         else:
             return jsonify({'message': 'Login failed'}), 500
 

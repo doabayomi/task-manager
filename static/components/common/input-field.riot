@@ -1,15 +1,22 @@
 <input-field>
   <div class="input-group">
     <div><slot name="icon"></slot></div>
-    <input type={props.type} placeholder={props.placeholder} ref="input" />
+    <input type={props.type} placeholder={props.placeholder} name={props.name}/>
   </div>
 
   <script>
-  export default {
-    props: {
-      type: "text",
-      placeholder: "Enter text",
-    },
-  };
+    export default {
+      props: {
+        type: "text",
+        placeholder: "Enter text",
+        name: "",
+      },
+      onMounted() {
+        // Strip props from the root element (if necessary)
+        Object.keys(this.props).forEach(attr => {
+          this.root.removeAttribute(attr);
+        });
+      }
+    };
   </script>
 </input-field>
