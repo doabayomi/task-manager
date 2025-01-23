@@ -8,7 +8,7 @@ from schemas import UserSchema
 
 from flask import (
     current_app as app,
-    request, jsonify, redirect, url_for
+    request, jsonify, redirect, url_for, render_template
 )
 from flask_security import SQLAlchemyUserDatastore as Datastore
 from flask_security import (
@@ -21,9 +21,11 @@ from flask_security.utils import hash_password
 # * The authentication routes are implemented in an API like system
 # * however as the case may be, it could be implemented in a page system
 # * with redirects implemented on server-side.
-@auth_blueprint.route('/register', methods=['POST'])
+@auth_blueprint.route('/register', methods=['POST', 'GET'])
 def register():
     """Signs up a user"""
+    if request.method == 'GET':
+        return render_template('register.html')
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
         if request.is_json:
@@ -37,7 +39,7 @@ def register():
             email = valid_user_data['email']
             password = valid_user_data['password']
         except ValidationError as err:
-            return jsonify(err.messages), 400
+            return jsonify({'message': 'Invalid input'}), 400
 
         user = user_datastore.find_user(email=email)
         if user is not None:
@@ -51,9 +53,11 @@ def register():
             'email': user.email})
 
 
-@auth_blueprint.route('/login', methods=['POST'])
+@auth_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
     """Logs a user in"""
+    if request.method == 'GET':
+        return render_template('login.html')
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
 
@@ -81,7 +85,7 @@ def login():
             return jsonify({'message': 'Login failed'}), 500
 
 
-@auth_blueprint.route('/logout', methods=['POST'])
+@auth_blueprint.route('/logout', methods=['POST', 'GET'])
 @auth_required()
 def logout():
     """Logs out a user"""

@@ -1,0 +1,113 @@
+<register-form>
+  <div class="container Grid -middle -center">
+    <div class="card Cell -4of12">
+      <div class="card-header">
+        <h1>Let's get you started</h1>
+        <p>Already have an account? <a href="/login">Login</a></p>
+      </div>
+
+      <form id="registerForm">
+        <input-field type="email" placeholder="Email Address" name="email">
+          <span slot="icon">✉️</span>
+        </input-field>
+        <div id="emailAlertBox" class="alert-danger"></div>
+
+        <input-field type="password" placeholder="Password" name="password">
+          <span slot="icon">🔒</span>
+        </input-field>
+        <div id="passwordAlertBox" class="alert-danger"></div>
+
+        <input-field type="password" placeholder="Confirm Password" name="confirm_password">
+          <span slot="icon">🔒</span>
+        </input-field>
+
+        <app-button class="primary full-width" type="submit" id="registerBtn">
+          Create an account
+        </app-button>
+      </form>
+      <div class="alert-danger" id="errorBox"></div>
+    </div>
+  </div>
+
+  <script>
+    import InputField from '@components/common/input-field.riot';
+    import AppButton from '@components/common/app-button.riot';
+    import validator from 'validator';
+
+    export default {
+      components: {
+        InputField,
+        AppButton
+      },
+
+      getFormValues() {
+        const form = this.$('form');
+        return {
+          email: form.elements['email'].value.trim(),
+          password: form.elements['password'].value.trim(),
+          confirmPassword: form.elements['confirm_password'].value.trim()
+        };
+      },
+
+      validateInputs(email, password, confirmPassword) {
+        if (!validator.isEmail(email)) return 'Invalid email address';
+        if (validator.isEmpty(password)) return 'Password is required';
+        if (!validator.isStrongPassword(password, { minLength: 6, minSymbols: 0 }))
+          return 'Password must be at least 6 characters long, include a digit, and an uppercase letter.';
+        if (!validator.equals(password, confirmPassword)) return 'Passwords do not match.';
+        return null; // No errors
+      },
+
+      async handleSubmit(e) {
+        e.preventDefault();
+
+        const { email, password, confirmPassword } = this.getFormValues();
+        const submitBtn = this.$('#registerBtn');
+        const errorBox = this.$('#errorBox');
+        const emailErrorBox = this.$('#emailAlertBox');
+        const passwordErrorBox = this.$('#passwordAlertBox');
+
+        // Clear previous errors
+        errorBox.innerHTML = emailErrorBox.innerHTML = passwordErrorBox.innerHTML = '';
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<div class="lds-dual-ring"></div>';
+
+        const error = this.validateInputs(email, password, confirmPassword);
+        if (error) {
+          passwordErrorBox.innerHTML = error;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Create an account';
+          return;
+        }
+
+        try {
+          const response = await fetch('/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+
+          if (response.ok) {
+            window.location.href = '/auth/login';
+          } else {
+            const data = await response.json();
+            errorBox.innerHTML = data.message || 'Sign up failed';
+          }
+        } catch (err) {
+          errorBox.innerHTML = 'An error occurred. Please try again.';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Create an account';
+        }
+      },
+
+      onMounted() {
+        const form = this.$('#registerForm');
+        if (form) {
+          form.addEventListener('submit', this.handleSubmit);
+        }
+      }
+    };
+  </script>
+</register-form>

@@ -5,17 +5,17 @@ const page = document.body.getAttribute('data-page');
 
 switch (page) {
   
-  case 'home':
-    import('@components/home.riot').then((module) => {
-      riot.register('app', module.default);
-      riot.mount('app'); // Mount the component
-    }).catch((error) => {
-      console.error('Error loading home component:', error);
-    });
-    break;
-  
   case 'login':
     import('@components/authentication/login-form.riot').then((module) => {
+      riot.register('app', module.default);
+      riot.mount('app');
+    }).catch((error) => {
+      console.error('Error loading page:', error)
+    })
+    break;
+
+  case 'register':
+    import('@components/authentication/register-form.riot').then((module) => {
       riot.register('app', module.default);
       riot.mount('app');
     }).catch((error) => {
