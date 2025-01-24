@@ -2,8 +2,15 @@
 <sidebar>
   <div>
     <ul>
-      <li each="item in items" class="{ item.active }" onclick="select(item)">
-        <span>{item.icon}</span>
+      <!-- <li each="item in items" class="{ item.active }" onclick="select(item)"> -->
+      <li class="nav-item">
+        <span>🏠</span>
+      </li>
+      <li class="nav-item">
+        <span>🔗</span>
+      </li>
+      <li class="nav-item">
+        <span>⚙️</span>
       </li>
     </ul>
   </div>
@@ -33,12 +40,15 @@
 
   <script>
     export default {
-      props: {
+      /*props: {
         items: [
           { icon: "🏠", active: true },
           { icon: "🔗", active: false },
           { icon: "⚙️", active: false },
         ],
+      },*/
+      mounted() {
+        console.log('Sidebar mounted with items:', this.items);
       },
       select(item) {
         this.update({

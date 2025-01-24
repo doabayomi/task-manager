@@ -1,0 +1,15 @@
+<input-field>
+  <div class="input-group">
+    <div><slot name="icon"></slot></div>
+    <input type={props.type} placeholder={props.placeholder} ref="input" />
+  </div>
+
+  <script>
+  export default {
+    props: {
+      type: "text",
+      placeholder: "Enter text",
+    },
+  };
+  </script>
+</input-field>

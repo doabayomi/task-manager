@@ -1,0 +1,19 @@
+/* _buttons.css */
+button {
+  font-family: var(--font-main);
+  font-size: 18px;
+  border: none;
+  padding: 13px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: black;
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}

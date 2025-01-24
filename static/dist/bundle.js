@@ -16,77 +16,37 @@
   \*****************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/component.js\");\n/* harmony import */ var _app_riot__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.riot */ \"./app.riot\");\n\n\n\nconst mountApp = riot__WEBPACK_IMPORTED_MODULE_1__.component(_app_riot__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\nconst app = mountApp(\n  document.getElementById('root'),\n  { message: 'Hello World', items: [] }\n);\n\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/main.css */ \"./css/main.css\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/register.js\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/mount.js\");\n\r\n\r\n\r\nconst page = document.body.getAttribute('data-page');\r\n\r\nswitch (page) {\r\n  \r\n  case 'home':\r\n    __webpack_require__.e(/*! import() */ \"components_home_riot\").then(__webpack_require__.bind(__webpack_require__, /*! @components/home.riot */ \"./components/home.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app'); // Mount the component\r\n    }).catch((error) => {\r\n      console.error('Error loading home component:', error);\r\n    });\r\n    break;\r\n  \r\n  case 'login':\r\n    __webpack_require__.e(/*! import() */ \"components_authentication_login-form_riot\").then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/login-form.riot */ \"./components/authentication/login-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  // As many pages as needed we can just export the components to it.\r\n  default:\r\n    break;\r\n}\r\n\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 
-/***/ "./app.riot":
-/*!******************!*\
-  !*** ./app.riot ***!
-  \******************/
+/***/ "./css/main.css":
+/*!**********************!*\
+  !*** ./css/main.css ***!
+  \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_dashboard_riot__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/dashboard.riot */ \"./components/dashboard.riot\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: null,\n\n  exports: {\n    components: {\n      Dashboard: _components_dashboard_riot__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<dashboard expr0=\"expr0\"></dashboard>',\n    [\n      {\n        type: bindingTypes.TAG,\n        getComponent: getComponent,\n        evaluate: _scope => 'dashboard',\n        slots: [],\n        attributes: [],\n        redundantAttribute: 'expr0',\n        selector: '[expr0]'\n      }\n    ]\n  ),\n\n  name: 'app'\n});\n\n//# sourceURL=webpack:///./app.riot?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack:///./css/main.css?");
 
 /***/ }),
 
-/***/ "./components/add-task-button.riot":
-/*!*****************************************!*\
-  !*** ./components/add-task-button.riot ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: `add-task-button .add-task,[is=\"add-task-button\"] .add-task{ border: 2px dashed #5c5cff; padding: 20px; text-align: center; }add-task-button button,[is=\"add-task-button\"] button{ background-color: #5c5cff; color: white; font-size: 20px; border: none; border-radius: 50%; width: 50px; height: 50px; }`,\n\n  exports: {\n    addTask() {\n      console.log(\"Add Task clicked\");\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div class=\"add-task\"><button onclick=\"addTask()\">+</button><p>Add new task</p></div>',\n    []\n  ),\n\n  name: 'add-task-button'\n});\n\n//# sourceURL=webpack:///./components/add-task-button.riot?");
-
-/***/ }),
-
-/***/ "./components/calendar.riot":
-/*!**********************************!*\
-  !*** ./components/calendar.riot ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: `calendar .calendar,[is=\"calendar\"] .calendar{ border: 2px dashed #ddd; padding: 20px; text-align: center; height: 300px; }`,\n\n  exports: {\n    props: {\n      month: \"May\",\n      year: 2023,\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div class=\"calendar\"><h2 expr13=\"expr13\"> </h2><p>Calendar view here</p></div>',\n    [\n      {\n        redundantAttribute: 'expr13',\n        selector: '[expr13]',\n\n        expressions: [\n          {\n            type: expressionTypes.TEXT,\n            childNodeIndex: 0,\n\n            evaluate: _scope => [\n              _scope.month,\n              ', ',\n              _scope.year\n            ].join(\n              ''\n            )\n          }\n        ]\n      }\n    ]\n  ),\n\n  name: 'calendar'\n});\n\n//# sourceURL=webpack:///./components/calendar.riot?");
-
-/***/ }),
-
-/***/ "./components/dashboard.riot":
-/*!***********************************!*\
-  !*** ./components/dashboard.riot ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _sidebar_riot__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sidebar.riot */ \"./components/sidebar.riot\");\n/* harmony import */ var _task_card_riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task-card.riot */ \"./components/task-card.riot\");\n/* harmony import */ var _calendar_riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calendar.riot */ \"./components/calendar.riot\");\n/* harmony import */ var _add_task_button_riot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add-task-button.riot */ \"./components/add-task-button.riot\");\n\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: `dashboard .dashboard,[is=\"dashboard\"] .dashboard{ display: flex; }dashboard .main,[is=\"dashboard\"] .main{ flex: 1; padding: 20px; }dashboard .task-list,[is=\"dashboard\"] .task-list{ display: flex; flex-wrap: wrap; }`,\n\n  exports: {\n    components: {\n      Sidebar: _sidebar_riot__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n      TaskCard: _task_card_riot__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n      CalendarView: _calendar_riot__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n      AddTaskButton: _add_task_button_riot__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    },\n\n    props: {\n      tasks: [\n        { title: \"Design System\", priority: \"High\", description: \"...\", bgColor: \"#f28b82\" },\n        { title: \"Code Documentation\", priority: \"Medium\", description: \"...\", bgColor: \"#fbc15e\" },\n      ],\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div class=\"dashboard\"><sidebar expr1=\"expr1\"></sidebar><div class=\"main\"><h1>Pending Tasks (5)</h1><div class=\"task-list\"><task-card expr2=\"expr2\" each=\"task in tasks\"></task-card></div><calendar-view expr3=\"expr3\"></calendar-view><add-task-button expr4=\"expr4\"></add-task-button><task-statistics expr5=\"expr5\"></task-statistics></div></div>',\n    [\n      {\n        type: bindingTypes.TAG,\n        getComponent: getComponent,\n        evaluate: _scope => 'sidebar',\n        slots: [],\n        attributes: [],\n        redundantAttribute: 'expr1',\n        selector: '[expr1]'\n      },\n      {\n        type: bindingTypes.EACH,\n        getKey: null,\n        condition: null,\n\n        template: template(\n          null,\n          [\n            {\n              type: bindingTypes.TAG,\n              getComponent: getComponent,\n              evaluate: _scope => 'task-card',\n              slots: [],\n\n              attributes: [\n                {\n                  type: expressionTypes.ATTRIBUTE,\n                  isBoolean: false,\n                  name: 'title',\n                  evaluate: _scope => _scope.task.title\n                },\n                {\n                  type: expressionTypes.ATTRIBUTE,\n                  isBoolean: false,\n                  name: 'priority',\n                  evaluate: _scope => _scope.task.priority\n                },\n                {\n                  type: expressionTypes.ATTRIBUTE,\n                  isBoolean: false,\n                  name: 'description',\n                  evaluate: _scope => _scope.task.description\n                },\n                {\n                  type: expressionTypes.ATTRIBUTE,\n                  isBoolean: false,\n                  name: 'bg-color',\n                  evaluate: _scope => _scope.task.bgColor\n                }\n              ]\n            }\n          ]\n        ),\n\n        redundantAttribute: 'expr2',\n        selector: '[expr2]',\n        itemName: 'task',\n        indexName: null,\n        evaluate: _scope => _scope.tasks\n      },\n      {\n        type: bindingTypes.TAG,\n        getComponent: getComponent,\n        evaluate: _scope => 'calendar-view',\n        slots: [],\n        attributes: [],\n        redundantAttribute: 'expr3',\n        selector: '[expr3]'\n      },\n      {\n        type: bindingTypes.TAG,\n        getComponent: getComponent,\n        evaluate: _scope => 'add-task-button',\n        slots: [],\n        attributes: [],\n        redundantAttribute: 'expr4',\n        selector: '[expr4]'\n      },\n      {\n        type: bindingTypes.TAG,\n        getComponent: getComponent,\n        evaluate: _scope => 'task-statistics',\n        slots: [],\n        attributes: [],\n        redundantAttribute: 'expr5',\n        selector: '[expr5]'\n      }\n    ]\n  ),\n\n  name: 'dashboard'\n});\n\n//# sourceURL=webpack:///./components/dashboard.riot?");
-
-/***/ }),
-
-/***/ "./components/sidebar.riot":
-/*!*********************************!*\
-  !*** ./components/sidebar.riot ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: `sidebar nav,[is=\"sidebar\"] nav{ background-color: #f9df56; width: 80px; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }sidebar li,[is=\"sidebar\"] li{ list-style: none; margin: 15px 0; cursor: pointer; }sidebar li.active,[is=\"sidebar\"] li.active{ background-color: #000; color: #fff; border-radius: 8px; padding: 10px; }`,\n\n  exports: {\n    props: {\n      items: [\n        { icon: \"🏠\", active: true },\n        { icon: \"🔗\", active: false },\n        { icon: \"⚙️\", active: false },\n      ],\n    },\n\n    select(item) {\n      this.update({\n        items: this.items.map((i) => ({ ...i, active: i === item })),\n      });\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div><ul><li expr6=\"expr6\" each=\"item in items\" onclick=\"select(item)\"></li></ul></div>',\n    [\n      {\n        type: bindingTypes.EACH,\n        getKey: null,\n        condition: null,\n\n        template: template(\n          '<span expr7=\"expr7\"> </span>',\n          [\n            {\n              expressions: [\n                {\n                  type: expressionTypes.ATTRIBUTE,\n                  isBoolean: false,\n                  name: 'class',\n                  evaluate: _scope => _scope.item.active\n                }\n              ]\n            },\n            {\n              redundantAttribute: 'expr7',\n              selector: '[expr7]',\n\n              expressions: [\n                {\n                  type: expressionTypes.TEXT,\n                  childNodeIndex: 0,\n                  evaluate: _scope => _scope.item.icon\n                }\n              ]\n            }\n          ]\n        ),\n\n        redundantAttribute: 'expr6',\n        selector: '[expr6]',\n        itemName: 'item',\n        indexName: null,\n        evaluate: _scope => _scope.items\n      }\n    ]\n  ),\n\n  name: 'sidebar'\n});\n\n//# sourceURL=webpack:///./components/sidebar.riot?");
-
-/***/ }),
-
-/***/ "./components/task-card.riot":
-/*!***********************************!*\
-  !*** ./components/task-card.riot ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  css: `task-card .card,[is=\"task-card\"] .card{ border-radius: 10px; padding: 20px; margin: 10px; position: relative; }task-card .priority,[is=\"task-card\"] .priority{ font-size: 12px; margin-top: 10px; }task-card .priority.high,[is=\"task-card\"] .priority.high{ color: red; }task-card .priority.medium,[is=\"task-card\"] .priority.medium{ color: orange; }task-card .priority.low,[is=\"task-card\"] .priority.low{ color: green; }task-card .action,[is=\"task-card\"] .action{ position: absolute; top: 10px; right: 10px; }`,\n\n  exports: {\n    props: {\n      time: \"5:21 PM\",\n      date: \"12/24/14\",\n      title: \"Task Title\",\n      description: \"Task description...\",\n      priority: \"High\", // High, Medium, Low\n      bgColor: \"#f28b82\",\n    },\n\n    actionClick() {\n      console.log(\"Action clicked for:\", this.title);\n    }\n  },\n\n  template: (\n    template,\n    expressionTypes,\n    bindingTypes,\n    getComponent\n  ) => template(\n    '<div expr8=\"expr8\" class=\"card\"><p expr9=\"expr9\" class=\"time\"> </p><h3 expr10=\"expr10\"> </h3><p expr11=\"expr11\" class=\"description\"> </p><p expr12=\"expr12\"> </p><button class=\"action\" onclick=\"actionClick()\">↗</button></div>',\n    [\n      {\n        redundantAttribute: 'expr8',\n        selector: '[expr8]',\n\n        expressions: [\n          {\n            type: expressionTypes.ATTRIBUTE,\n            isBoolean: false,\n            name: 'style',\n\n            evaluate: _scope => [\n              'background-color: ',\n              _scope.bgColor,\n              ';'\n            ].join(\n              ''\n            )\n          }\n        ]\n      },\n      {\n        redundantAttribute: 'expr9',\n        selector: '[expr9]',\n\n        expressions: [\n          {\n            type: expressionTypes.TEXT,\n            childNodeIndex: 0,\n\n            evaluate: _scope => [\n              _scope.time,\n              ' | ',\n              _scope.date\n            ].join(\n              ''\n            )\n          }\n        ]\n      },\n      {\n        redundantAttribute: 'expr10',\n        selector: '[expr10]',\n\n        expressions: [\n          {\n            type: expressionTypes.TEXT,\n            childNodeIndex: 0,\n            evaluate: _scope => _scope.title\n          }\n        ]\n      },\n      {\n        redundantAttribute: 'expr11',\n        selector: '[expr11]',\n\n        expressions: [\n          {\n            type: expressionTypes.TEXT,\n            childNodeIndex: 0,\n            evaluate: _scope => _scope.description\n          }\n        ]\n      },\n      {\n        redundantAttribute: 'expr12',\n        selector: '[expr12]',\n\n        expressions: [\n          {\n            type: expressionTypes.TEXT,\n            childNodeIndex: 0,\n            evaluate: _scope => _scope.priority\n          },\n          {\n            type: expressionTypes.ATTRIBUTE,\n            isBoolean: false,\n            name: 'class',\n\n            evaluate: _scope => [\n              'priority ',\n              _scope.priority.toLowerCase()\n            ].join(\n              ''\n            )\n          }\n        ]\n      }\n    ]\n  ),\n\n  name: 'task-card'\n});\n\n//# sourceURL=webpack:///./components/task-card.riot?");
-
-/***/ }),
-
-/***/ "./node_modules/riot/esm/api/component.js":
-/*!************************************************!*\
-  !*** ./node_modules/riot/esm/api/component.js ***!
-  \************************************************/
+/***/ "./node_modules/riot/esm/api/mount.js":
+/*!********************************************!*\
+  !*** ./node_modules/riot/esm/api/mount.js ***!
+  \********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   component: () => (/* binding */ component)\n/* harmony export */ });\n/* harmony import */ var _dependencies_cumpa_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dependencies/cumpa/index.js */ \"./node_modules/riot/esm/dependencies/cumpa/index.js\");\n/* harmony import */ var _core_create_component_from_wrapper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/create-component-from-wrapper.js */ \"./node_modules/riot/esm/core/create-component-from-wrapper.js\");\n/* Riot v9.4.4, @license MIT */\n\n\n\n/**\n * Helper method to create component without relying on the registered ones\n * @param   {Object} implementation - component implementation\n * @returns {Function} function that will allow you to mount a riot component on a DOM node\n */\nfunction component(implementation) {\n  return (el, props, { slots, attributes, parentScope } = {}) =>\n    (0,_dependencies_cumpa_index_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\n      (c) => c.mount(el, parentScope),\n      (c) => c({ props, slots, attributes }),\n      _core_create_component_from_wrapper_js__WEBPACK_IMPORTED_MODULE_1__.createComponentFromWrapper,\n    )(implementation)\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/riot/esm/api/component.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   mount: () => (/* binding */ mount)\n/* harmony export */ });\n/* harmony import */ var _dependencies_bianco_query_index_next_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dependencies/bianco.query/index.next.js */ \"./node_modules/riot/esm/dependencies/bianco.query/index.next.js\");\n/* harmony import */ var _core_mount_component_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/mount-component.js */ \"./node_modules/riot/esm/core/mount-component.js\");\n/* Riot v9.4.4, @license MIT */\n\n\n\n/**\n * Mounting function that will work only for the components that were globally registered\n * @param   {string|HTMLElement} selector - query for the selection or a DOM element\n * @param   {Object} initialProps - the initial component properties\n * @param   {string} name - optional component name\n * @returns {Array} list of riot components\n */\nfunction mount(selector, initialProps, name) {\n  return (0,_dependencies_bianco_query_index_next_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(selector).map((element) =>\n    (0,_core_mount_component_js__WEBPACK_IMPORTED_MODULE_1__.mountComponent)(element, initialProps, name),\n  )\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/riot/esm/api/mount.js?");
+
+/***/ }),
+
+/***/ "./node_modules/riot/esm/api/register.js":
+/*!***********************************************!*\
+  !*** ./node_modules/riot/esm/api/register.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   register: () => (/* binding */ register)\n/* harmony export */ });\n/* harmony import */ var _dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dependencies/@riotjs/util/constants.js */ \"./node_modules/riot/esm/dependencies/@riotjs/util/constants.js\");\n/* harmony import */ var _dependencies_riotjs_util_misc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dependencies/@riotjs/util/misc.js */ \"./node_modules/riot/esm/dependencies/@riotjs/util/misc.js\");\n/* harmony import */ var _core_create_component_from_wrapper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/create-component-from-wrapper.js */ \"./node_modules/riot/esm/core/create-component-from-wrapper.js\");\n/* Riot v9.4.4, @license MIT */\n\n\n\n\n/**\n * Register a custom tag by name\n * @param   {string} name - component name\n * @param   {Object} implementation - tag implementation\n * @returns {Map} map containing all the components implementations\n */\nfunction register(name, { css, template, exports }) {\n  if (_dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_0__.COMPONENTS_IMPLEMENTATION_MAP.has(name))\n    (0,_dependencies_riotjs_util_misc_js__WEBPACK_IMPORTED_MODULE_1__.panic)(`The component \"${name}\" was already registered`);\n\n  _dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_0__.COMPONENTS_IMPLEMENTATION_MAP.set(\n    name,\n    (0,_core_create_component_from_wrapper_js__WEBPACK_IMPORTED_MODULE_2__.createComponentFromWrapper)({ name, css, template, exports }),\n  );\n\n  return _dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_0__.COMPONENTS_IMPLEMENTATION_MAP\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/riot/esm/api/register.js?");
 
 /***/ }),
 
@@ -240,6 +200,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./node_modules/riot/esm/core/mount-component.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/riot/esm/core/mount-component.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   mountComponent: () => (/* binding */ mountComponent)\n/* harmony export */ });\n/* harmony import */ var _dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dependencies/@riotjs/util/constants.js */ \"./node_modules/riot/esm/dependencies/@riotjs/util/constants.js\");\n/* harmony import */ var _dependencies_riotjs_util_misc_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dependencies/@riotjs/util/misc.js */ \"./node_modules/riot/esm/dependencies/@riotjs/util/misc.js\");\n/* harmony import */ var _utils_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/dom.js */ \"./node_modules/riot/esm/utils/dom.js\");\n/* Riot v9.4.4, @license MIT */\n\n\n\n\n/**\n * Component initialization function starting from a DOM node\n * @param   {HTMLElement} element - element to upgrade\n * @param   {Object} initialProps - initial component properties\n * @param   {string} componentName - component id\n * @param   {Array} slots - component slots\n * @returns {Object} a new component instance bound to a DOM node\n */\nfunction mountComponent(element, initialProps, componentName, slots) {\n  const name = componentName || (0,_utils_dom_js__WEBPACK_IMPORTED_MODULE_0__.getName)(element);\n  if (!_dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_1__.COMPONENTS_IMPLEMENTATION_MAP.has(name))\n    (0,_dependencies_riotjs_util_misc_js__WEBPACK_IMPORTED_MODULE_2__.panic)(`The component named \"${name}\" was never registered`);\n\n  const component = _dependencies_riotjs_util_constants_js__WEBPACK_IMPORTED_MODULE_1__.COMPONENTS_IMPLEMENTATION_MAP.get(name)({\n    props: initialProps,\n    slots,\n  });\n\n  return component.mount(element)\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/riot/esm/core/mount-component.js?");
+
+/***/ }),
+
 /***/ "./node_modules/riot/esm/core/pure-component-api.js":
 /*!**********************************************************!*\
   !*** ./node_modules/riot/esm/core/pure-component-api.js ***!
@@ -390,16 +360,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./node_modules/riot/esm/dependencies/cumpa/index.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/riot/esm/dependencies/cumpa/index.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ compose)\n/* harmony export */ });\n/* Riot WIP, @license MIT */\n/**\n * Similar to compose but performs from left-to-right function composition.<br/>\n * {@link https://30secondsofcode.org/function#composeright see also}\n * @param   {...[function]} fns) - list of unary function\n * @returns {*} result of the computation\n */\n\n/**\n * Performs right-to-left function composition.<br/>\n * Use Array.prototype.reduce() to perform right-to-left function composition.<br/>\n * The last (rightmost) function can accept one or more arguments; the remaining functions must be unary.<br/>\n * {@link https://30secondsofcode.org/function#compose original source code}\n * @param   {...[function]} fns) - list of unary function\n * @returns {*} result of the computation\n */\nfunction compose(...fns) {\n  return fns.reduce((f, g) => (...args) => f(g(...args)))\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/riot/esm/dependencies/cumpa/index.js?");
-
-/***/ }),
-
 /***/ "./node_modules/riot/esm/dependencies/curri/index.js":
 /*!***********************************************************!*\
   !*** ./node_modules/riot/esm/dependencies/curri/index.js ***!
@@ -456,6 +416,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -469,9 +432,98 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".bundle.js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		// data-webpack is not used as build has no uniqueName
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 		
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -483,6 +535,119 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
 /******/ 	
 /************************************************************************/

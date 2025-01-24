@@ -1,0 +1,18 @@
+<app-button>
+  <button class={props.class} type={props.type} onclick={props.handleClick}>
+    <slot />
+  </button>
+
+  <script>
+  export default {
+    props: {
+      class: "secondary",
+      type: "button",
+      onclick: null,
+    },
+    handleClick(e) {
+      if (this.props.onclick) this.props.onclick(e);
+    },
+  };
+  </script>
+</app-button>

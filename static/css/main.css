@@ -1,0 +1,11 @@
+@import 'normalize.css'; /* Normalize styles for cross-browser compatibility */
+@import 'grd'; /* GRD for grid layout */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* main.css */
+@import './_variables.css';
+@import './_globals.css';
+@import './_buttons.css';
+@import './_layout.css';
+@import './_inputs.css';
+@import './_divider.css';
