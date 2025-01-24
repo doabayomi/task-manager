@@ -94,6 +94,8 @@ def login():
 def logout():
     """Logs out a user"""
     logout_user()
+    if request.method == 'GET':
+        return redirect(url_for('auth.login'))
     return jsonify({'message': 'Logout successful'})
 
 
