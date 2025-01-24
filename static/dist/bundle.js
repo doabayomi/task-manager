@@ -16,7 +16,7 @@
   \*****************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/main.css */ \"./css/main.css\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/register.js\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/mount.js\");\n\r\n\r\n\r\nconst page = document.body.getAttribute('data-page');\r\n\r\nswitch (page) {\r\n  \r\n  case 'login':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_validator_index_js\"), __webpack_require__.e(\"components_authentication_login-form_riot\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/login-form.riot */ \"./components/authentication/login-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n\r\n  case 'register':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_validator_index_js\"), __webpack_require__.e(\"components_authentication_register-form_riot\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/register-form.riot */ \"./components/authentication/register-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  // As many pages as needed we can just export the components to it.\r\n  default:\r\n    break;\r\n}\r\n\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/main.css */ \"./css/main.css\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/register.js\");\n/* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! riot */ \"./node_modules/riot/esm/api/mount.js\");\n\r\n\r\n\r\nconst page = document.body.getAttribute('data-page');\r\n\r\nswitch (page) {\r\n  \r\n  case 'login':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_validator_index_js\"), __webpack_require__.e(\"components_authentication_login-form_riot\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/login-form.riot */ \"./components/authentication/login-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n\r\n  case 'register':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_validator_index_js\"), __webpack_require__.e(\"components_authentication_register-form_riot\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/authentication/register-form.riot */ \"./components/authentication/register-form.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('app', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('app');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  case 'dashboard':\r\n    Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_boxicons_dist_boxicons_js-node_modules_tippy_js_dist_tippy_css-node_modu-b39e2f\"), __webpack_require__.e(\"components_common_sidebar_riot-node_modules_tippy_js_dist_tippy_css\")]).then(__webpack_require__.bind(__webpack_require__, /*! @components/common/sidebar.riot */ \"./components/common/sidebar.riot\")).then((module) => {\r\n      riot__WEBPACK_IMPORTED_MODULE_1__.register('sidebar', module.default);\r\n      riot__WEBPACK_IMPORTED_MODULE_2__.mount('sidebar');\r\n    }).catch((error) => {\r\n      console.error('Error loading page:', error)\r\n    })\r\n    break;\r\n  \r\n  // As many pages as needed we can just export the components to it.\r\n  default:\r\n    break;\r\n}\r\n\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 
@@ -471,7 +471,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "" + chunkId + ".styles.css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -570,6 +570,92 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/css loading */
+/******/ 	(() => {
+/******/ 		if (typeof document === "undefined") return;
+/******/ 		var createStylesheet = (chunkId, fullhref, oldTag, resolve, reject) => {
+/******/ 			var linkTag = document.createElement("link");
+/******/ 		
+/******/ 			linkTag.rel = "stylesheet";
+/******/ 			linkTag.type = "text/css";
+/******/ 			if (__webpack_require__.nc) {
+/******/ 				linkTag.nonce = __webpack_require__.nc;
+/******/ 			}
+/******/ 			var onLinkComplete = (event) => {
+/******/ 				// avoid mem leaks.
+/******/ 				linkTag.onerror = linkTag.onload = null;
+/******/ 				if (event.type === 'load') {
+/******/ 					resolve();
+/******/ 				} else {
+/******/ 					var errorType = event && event.type;
+/******/ 					var realHref = event && event.target && event.target.href || fullhref;
+/******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + errorType + ": " + realHref + ")");
+/******/ 					err.name = "ChunkLoadError";
+/******/ 					err.code = "CSS_CHUNK_LOAD_FAILED";
+/******/ 					err.type = errorType;
+/******/ 					err.request = realHref;
+/******/ 					if (linkTag.parentNode) linkTag.parentNode.removeChild(linkTag)
+/******/ 					reject(err);
+/******/ 				}
+/******/ 			}
+/******/ 			linkTag.onerror = linkTag.onload = onLinkComplete;
+/******/ 			linkTag.href = fullhref;
+/******/ 		
+/******/ 		
+/******/ 			if (oldTag) {
+/******/ 				oldTag.parentNode.insertBefore(linkTag, oldTag.nextSibling);
+/******/ 			} else {
+/******/ 				document.head.appendChild(linkTag);
+/******/ 			}
+/******/ 			return linkTag;
+/******/ 		};
+/******/ 		var findStylesheet = (href, fullhref) => {
+/******/ 			var existingLinkTags = document.getElementsByTagName("link");
+/******/ 			for(var i = 0; i < existingLinkTags.length; i++) {
+/******/ 				var tag = existingLinkTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
+/******/ 				if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return tag;
+/******/ 			}
+/******/ 			var existingStyleTags = document.getElementsByTagName("style");
+/******/ 			for(var i = 0; i < existingStyleTags.length; i++) {
+/******/ 				var tag = existingStyleTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href");
+/******/ 				if(dataHref === href || dataHref === fullhref) return tag;
+/******/ 			}
+/******/ 		};
+/******/ 		var loadStylesheet = (chunkId) => {
+/******/ 			return new Promise((resolve, reject) => {
+/******/ 				var href = __webpack_require__.miniCssF(chunkId);
+/******/ 				var fullhref = __webpack_require__.p + href;
+/******/ 				if(findStylesheet(href, fullhref)) return resolve();
+/******/ 				createStylesheet(chunkId, fullhref, null, resolve, reject);
+/******/ 			});
+/******/ 		}
+/******/ 		// object to store loaded CSS chunks
+/******/ 		var installedCssChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
+/******/ 			var cssChunks = {"components_common_sidebar_riot-node_modules_tippy_js_dist_tippy_css":1};
+/******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
+/******/ 					installedCssChunks[chunkId] = 0;
+/******/ 				}, (e) => {
+/******/ 					delete installedCssChunks[chunkId];
+/******/ 					throw e;
+/******/ 				}));
+/******/ 			}
+/******/ 		};
+/******/ 		
+/******/ 		// no hmr
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

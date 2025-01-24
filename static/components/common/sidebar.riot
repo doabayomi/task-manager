@@ -1,50 +1,42 @@
-// Sidebar Component
 <sidebar>
-  <div>
-    <ul>
-      <li each="item in items" class="{ item.active }" onclick="select(item)">
-        <span>{item.icon}</span>
-      </li>
-    </ul>
-  </div>
+  <nav>
+    <div>
+      <span>
+        <img src="{props.logoUrl}" alt="Logo" />
+      </span>
+    </div>
 
-  <style>
-    nav {
-      background-color: #f9df56;
-      width: 80px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    li {
-      list-style: none;
-      margin: 15px 0;
-      cursor: pointer;
-    }
-    li.active {
-      background-color: #000;
-      color: #fff;
-      border-radius: 8px;
-      padding: 10px;
-    }
-  </style>
-
+    <div id="menu">
+      <span data-tippy-content="Dashboard">
+        <a href="/dashboard"><box-icon name='dashboard' type='solid' ></box-icon></a>
+      </span>
+      <span data-tippy-content="Tasks">
+        <a href="/view_tasks"><box-icon type='solid' name='objects-horizontal-left'></box-icon></a>
+      </span>
+      <span data-tippy-content="Profile">
+        <a href="/edit_profile"><box-icon name='cog' type='solid' ></box-icon></a>
+      </span>
+    </div>
+  
+    <div id="logout-menu">
+      <span data-tippy-content="Logout">
+        <a href="/auth/logout"><box-icon name='log-out' type='solid' ></box-icon></a>
+      </span>
+    </div>
+  </nav>
   <script>
+    import 'boxicons';
+    import tippy from 'tippy.js';
+    import 'tippy.js/dist/tippy.css';
+
     export default {
-      props: {
-        items: [
-          { icon: "🏠", active: true },
-          { icon: "🔗", active: false },
-          { icon: "⚙️", active: false },
-        ],
-      },
-      select(item) {
-        this.update({
-          items: this.items.map((i) => ({ ...i, active: i === item })),
+      onMounted() {
+        tippy('[data-tippy-content]', {
+          placement: 'right',
+          arrow: true,
+          theme: 'translucent',
         });
-      },
+      }
     };
   </script>
 </sidebar>

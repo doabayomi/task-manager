@@ -1,0 +1,40 @@
+<task>
+  <div class="task" style="background-color: {priorityColors[props.priority]}">
+    <div class="task-overview">
+      <div>
+        <div class="meta">
+          <span>{props.time}</span>
+          <div class="dot""></div>
+          <span>{props.deadline}</span>
+        </div>
+        <div class="task-name">
+          {props.name}
+        </div>
+      </div>
+      <div class="task-icon"><box-icon name='right-top-arrow-circle' ></box-icon></div>
+    </div>
+    <div class="details">
+      <p class="task-description">
+        {props.description}
+      </p>
+      <div class="task-tag">
+        <div class="priority" style="background-color: {priorityColors[props.priority]}; color: {textColors[props.priority]}">
+          <div class="dot" style="background-color: {priorityColors[props.priority]}"></div>
+          {props.priority} Priority
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import 'boxicons';
+    export default {
+      priorityColors: {
+        High: '#FF8D7D',
+        Medium: '#B17DFF',
+        Normal: '#7DFF9C',
+        Low: '#7DF3FF',
+      },
+    };
+  </script>
+</task>

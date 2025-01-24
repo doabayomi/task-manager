@@ -575,6 +575,76 @@ input:-webkit-autofill, input:autofill {
   margin-bottom: 6px;
 }
 /*!********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./css/_sidebar.css ***!
+  \********************************************************************/
+sidebar nav {
+  height: 100vh;
+  background-color: var(--primary-color);
+  max-width: 80px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 16px 0; */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle depth */
+}
+
+nav div {
+  /* margin-top: 24px; */
+  margin-bottom: 24px;
+  box-sizing: content-box;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#menu span box-icon {
+  width: 24px;
+  height: auto;
+  fill: var(--bg-dark);
+  transition: transform 0.3s;
+}
+
+
+nav div span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+  padding: 6px 20px;
+  /* width: 48px; Ensure consistent size for icons */
+  /* height: 32px; */
+  box-sizing: border-box;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+nav div span img {
+  /* width: 24px; */
+  height: auto;
+  object-fit: contain;
+}
+
+#menu span.active, 
+#menu span:hover, 
+#logout-menu span:hover {
+  background-color: var(--bg-dark);
+  /* border: 2px solid var(--secondary-color); */
+  color: var(--primary-color);
+  /* transform: scale(1.05); Subtle hover effect */
+}
+
+#menu span.active box-icon, 
+#menu span:hover box-icon,
+#logout-menu span:hover box-icon {
+  fill: var(--primary-color);
+  /* transform: scale(1.05); */
+}
+/*!********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./css/main.css (1) ***!
   \********************************************************************/
 /* Normalize styles for cross-browser compatibility */ /* GRD for grid layout */

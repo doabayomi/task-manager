@@ -23,6 +23,15 @@ switch (page) {
     })
     break;
   
+  case 'dashboard':
+    import('@components/common/sidebar.riot').then((module) => {
+      riot.register('sidebar', module.default);
+      riot.mount('sidebar');
+    }).catch((error) => {
+      console.error('Error loading page:', error)
+    })
+    break;
+  
   // As many pages as needed we can just export the components to it.
   default:
     break;
