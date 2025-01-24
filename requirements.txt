@@ -15,3 +15,4 @@ setuptools
 
 flask-restful  # API handling
 marshmallow  # Validation, serializing and deserialization
+requests # API calls

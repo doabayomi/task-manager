@@ -11,3 +11,8 @@ a {
   color: var(--primary-color);
   text-decoration: none;
 }
+
+.task-container-title {
+  margin: 0;
+  margin-bottom: 20px
+}

@@ -29,6 +29,12 @@ switch (page) {
       riot.mount('sidebar');
     }).catch((error) => {
       console.error('Error loading page:', error)
+    });
+    import('@components/common/task.riot').then((module) => {
+      riot.register('task', module.default);
+      riot.mount('task');
+    }).catch((error) => {
+      console.error('Error loading page:', error)
     })
     break;
   

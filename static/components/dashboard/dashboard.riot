@@ -1,51 +1,7 @@
-// Dashboard Layout Component
 <dashboard>
-  <div class="dashboard">
-    <sidebar></sidebar>
-    <div class="main">
-      <h1>Pending Tasks (5)</h1>
-      <div class="task-list">
-        <task-card each="task in tasks" title="{task.title}" priority="{task.priority}" description="{task.description}" bg-color="{task.bgColor}"></task-card>
-      </div>
-      <calendar-view></calendar-view>
-      <add-task-button></add-task-button>
-      <task-statistics></task-statistics>
+  <div class="Grid">
+    <div class="Cell -3of12">
+      
     </div>
   </div>
-
-  <style>
-    .dashboard {
-      display: flex;
-    }
-    .main {
-      flex: 1;
-      padding: 20px;
-    }
-    .task-list {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  </style>
-
-  <script>
-    import Sidebar from './sidebar.riot';
-    import TaskCard from './task-card.riot';
-    import CalendarView from './calendar.riot';
-    import AddTaskButton from './add-task-button.riot';
-
-    export default {
-      components: {
-        Sidebar,
-        TaskCard,
-        CalendarView,
-        AddTaskButton,
-      },
-      props: {
-        tasks: [
-          { title: "Design System", priority: "High", description: "...", bgColor: "#f28b82" },
-          { title: "Code Documentation", priority: "Medium", description: "...", bgColor: "#fbc15e" },
-        ],
-      },
-    };
-  </script>
 </dashboard>

@@ -56,8 +56,12 @@ def register():
 @auth_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
     """Logs a user in"""
+    if current_user.is_authenticated:
+        return redirect(url_for('pages.dashboard'))
+
     if request.method == 'GET':
         return render_template('login.html')
+
     with app.app_context():
         user_datastore: Datastore = app.extensions['security'].datastore
 

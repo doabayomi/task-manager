@@ -4,19 +4,15 @@
       <div>
         <div class="meta">
           <span>{props.time}</span>
-          <div class="dot""></div>
+          <div class="dot"></div>
           <span>{props.deadline}</span>
         </div>
-        <div class="task-name">
-          {props.name}
-        </div>
+        <div class="task-name">{props.name}</div>
       </div>
-      <div class="task-icon"><box-icon name='right-top-arrow-circle' ></box-icon></div>
+      <a href="/view_task/{props.id}"><div class="task-icon"><box-icon name='right-top-arrow-circle'></box-icon></div></a>
     </div>
     <div class="details">
-      <p class="task-description">
-        {props.description}
-      </p>
+      <p class="task-description">{props.description}</p>
       <div class="task-tag">
         <div class="priority" style="background-color: {priorityColors[props.priority]}; color: {textColors[props.priority]}">
           <div class="dot" style="background-color: {priorityColors[props.priority]}"></div>
@@ -35,6 +31,12 @@
         Normal: '#7DFF9C',
         Low: '#7DF3FF',
       },
+      onMounted() {
+        // Strip props from the root element (if necessary)
+        Object.keys(this.props).forEach(attr => {
+          this.root.removeAttribute(attr);
+        });
+      }
     };
   </script>
 </task>

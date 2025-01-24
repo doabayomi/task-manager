@@ -4,5 +4,23 @@
 {% block page_name %}dashboard{% endblock %}
 
 {% block content %}
-  <app>You made it my friend.</app>
+  <div class="Grid">
+    <sidebar class="Cell" logo-url="{{ url_for('static', filename='images/logo-dark.svg') }}">
+    </sidebar>
+    <div class="Cell Grid">
+      <div class="Cell -3of12">
+        <h2 id="task-container-title">Recent tasks</h2>
+        {% for task in tasks %}
+          <task
+            id="{{ task.id }}"
+            name="{{ task.name }}"
+            description="{{ task.description }}"
+            priority="{{ task.priority }}"
+            time="{{ task.time }}"
+            deadline="{{ task.deadline }}"
+          ></task>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
